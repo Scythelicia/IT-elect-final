@@ -185,7 +185,7 @@ if (isset($_GET['logout'])) {
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    
+
                 </ul>
             </div>
         </div>
@@ -194,8 +194,7 @@ if (isset($_GET['logout'])) {
     <!-- Main Content -->
     <div class="main-container">
         <h1>Welcome to F & K Apparell</h1>
-        <p>Easily manage your wishlist and future purchases with a seamless dashboard experience. Organize, track,
-            and prioritize your desired products, ensuring you're always prepared for your next shopping spree.</p>
+        <p>Step into the world of premium footwear with ease. Our platform empowers you to curate your wishlist, track upcoming releases. Discover, organize, and elevate your style effortlessly.</p>
 
         <!-- Image Grid -->
         <div class="img-container">
@@ -204,8 +203,8 @@ if (isset($_GET['logout'])) {
                 <div class="coming-soon">Coming Soon</div>
                 <h5>Jordan Tatum 3 PF</h5>
                 <p>
-                    <span class="original-price">$130.00</span>
-                    <span class="discounted-price">$91.00</span>
+                    <span class="original-price">$130.99</span>
+                    <span class="discounted-price">$99.99</span>
                 </p>
             </div>
             <div class="img-card">
@@ -213,8 +212,8 @@ if (isset($_GET['logout'])) {
                 <div class="coming-soon">Coming Soon</div>
                 <h5>Jordan Luka 3 PF</h5>
                 <p>
-                    <span class="original-price">$120.00</span>
-                    <span class="discounted-price">$84.00</span>
+                    <span class="original-price">$120.99</span>
+                    <span class="discounted-price">$89.99</span>
                 </p>
             </div>
             <div class="img-card">
@@ -222,30 +221,55 @@ if (isset($_GET['logout'])) {
                 <div class="coming-soon">Coming Soon</div>
                 <h5>Jordan Zion 3 (GS)</h5>
                 <p>
-                    <span class="original-price">$100.00</span>
-                    <span class="discounted-price">$70.00</span>
+                    <span class="original-price">$100.99</span>
+                    <span class="discounted-price">$79.99</span>
                 </p>
             </div>
             <div class="img-card">
                 <img src="{{ asset('images/GIANNIS+IMMORTALITY+4+EP.png') }}" alt="Giannis Immortality 4 EP">
                 <h5>Giannis Immortality 4 EP</h5>
                 <p>
-                    <span class="original-price">$110.00</span>
-                    <span class="discounted-price">$77.00</span>
+                    <span class="original-price">$110.99</span>
+                    <span class="discounted-price">$79.99</span>
                 </p>
             </div>
             <div class="img-card">
                 <img src="{{ asset('images/NIKE+PRECISION+VII.png') }}" alt="Nike Precision VII">
                 <h5>Nike Precision VII</h5>
                 <p>
-                    <span class="original-price">$90.00</span>
-                    <span class="discounted-price">$63.00</span>
+                    <span class="original-price">$99.99</span>
+                    <span class="discounted-price">$69.99</span>
                 </p>
             </div>
         </div>
 
         <div class="mt-4">
-            <a href="/products" class="btn btn-primary">Order Now</a>
+            <button class="btn btn-primary" id="orderNowBtn">Order Now</button>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="username" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -255,6 +279,20 @@ if (isset($_GET['logout'])) {
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const orderNowBtn = document.getElementById('orderNowBtn');
+        const loginForm = document.getElementById('loginForm');
+
+        orderNowBtn.addEventListener('click', () => {
+            const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+            loginModal.show();
+        });
+
+        loginForm.addEventListener('submit', (event) => {
+            event.preventDefault(); // Prevent actual form submission
+            window.location.href = '/products'; // Redirect to the intended page
+        });
+    </script>
 </body>
 
 </html>
